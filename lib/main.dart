@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 void main() {
   runApp(const MainApp());
@@ -89,30 +90,69 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class AudioCaptureScreen extends StatelessWidget {
+class AudioCaptureScreen extends StatefulWidget {
   const AudioCaptureScreen({super.key});
+
+  @override
+  State<AudioCaptureScreen> createState() => _AudioCaptureScreenState();
+}
+
+class _AudioCaptureScreenState extends State<AudioCaptureScreen> {
+  late stt.SpeechToText _speech;
+  bool _isListening = false;
+  String _recognizedText = 'Presiona el botón para empezar a hablar';
+
+  @override
+  void initState() {
+    super.initState();
+    _speech = stt.SpeechToText();
+  }
+
+  void _startListening() async {
+    bool available = await _speech.initialize(
+      // onStatus: (val) => print('Status: $val'),
+      // onError: (val) => print('Error: $val'),
+    );
+    if (available) {
+      setState(() => _isListening = true);
+      _speech.listen(
+        onResult:
+            (val) => setState(() {
+              _recognizedText = val.recognizedWords;
+            }),
+      );
+    } else {
+      setState(() => _isListening = false);
+      _speech.stop();
+    }
+  }
+
+  void _stopListening() {
+    setState(() => _isListening = false);
+    _speech.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Captura de Audio')),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(Icons.mic, size: 80, color: Colors.indigo),
             const SizedBox(height: 20),
-            const Text(
-              'Pulsa para comenzar a capturar audio',
-              style: TextStyle(fontSize: 18),
+            Text(
+              _recognizedText,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 30),
             ElevatedButton.icon(
-              onPressed: () {
-                // Aquí puedes implementar integración con SpeechToText o FlutterSound
-              },
-              icon: const Icon(Icons.play_arrow),
-              label: const Text('Iniciar Captura'),
+              onPressed: _isListening ? _stopListening : _startListening,
+              icon: Icon(_isListening ? Icons.stop : Icons.play_arrow),
+              label: Text(_isListening ? 'Detener' : 'Iniciar Captura'),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
