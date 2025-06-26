@@ -102,7 +102,7 @@ class AudioCaptureScreen extends StatefulWidget {
 class _AudioCaptureScreenState extends State<AudioCaptureScreen> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
-  String _recognizedText = 'Presiona el botón para empezar a hablar';
+  String _recognizedText = 'Presiona el botón para subtitular';
 
   double _fontSize = 18.0;
   bool _isFullScreen = false;
