@@ -19,12 +19,12 @@ AppDeSubconML/
 
 | **Carpeta/Archivo**       | **Capa MVC/BD**       | **Descripción**                                                                 |
 |---------------------------|-----------------------|---------------------------------------------------------------------------------|
-| `app/controllers/`        | Control               | Maneja la lógica de peticiones HTTP (ej: procesar datos de subconsultas ML).   |
-| `app/models/`             | Modelo                | Define entidades y reglas de negocio (ej: `ModeloML.py` con algoritmos).        |
+| `app/controllers/`        | Control               | Maneja la lógica de peticiones HTTP                                             |
+| `app/models/`             | Modelo                | Define entidades y reglas de negocio                                            |
 | `app/views/`              | Vista                 | *(Opcional)* En frameworks como MVC clásico, contiene lógica de presentación.   |
-| `app/database/`           | Base de Datos         | Operaciones CRUD y conexión a la BD (ej: `queries.py`, `connectors/`).          |
-| `app/routes/`             | Control               | Asocia URLs con controladores (ej: `routes.py` con `@app.route` en Flask).       |
-| `config/database.py`      | Base de Datos         | Configuración centralizada (ej: URI de conexión, pooling).                      |
-| `static/`                 | Vista                 | Assets estáticos: `css/`, `js/`, `img/` (ej: Bootstrap, scripts de visualización). |
-| `templates/`              | Vista                 | Plantillas renderizables (ej: `index.html`, `results.html` con Jinja2/Handlebars). |
+| `app/database/`           | Base de Datos         | Operaciones CRUD y conexión a la BD.                                            |
+| `app/routes/`             | Control               | Asocia URLs con controladores.                                                  |
+| `config/database.py`      | Base de Datos         | Configuración centralizada.                                                     |
+| `static/`                 | Vista                 | Assets estáticos: `css/`, `js/`, `img/`                                         |
+| `templates/`              | Vista                 | Plantillas renderizables                                                        |
 | `README.md`               | -                     | Guía de instalación, uso y arquitectura del proyecto.                           |
