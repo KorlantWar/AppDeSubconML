@@ -1,7 +1,6 @@
-# App_Subtitulation_with_ML
-Aplicación de Subtitulaje con Machine Learning en Tiempo Real para Personas con Discapacidad Auditiva en la Ciudad de Huancayo
->>>>>>> 9b871190a329771485f135b386ad75c47038c11f
->>>>>>> 
+# Estructura del Proyecto `AppDeSubconML`
+
+```plaintext
 AppDeSubconML/
 ├── app/
 │   ├── controllers/       # Capa de Control (Control)
@@ -15,3 +14,17 @@ AppDeSubconML/
 ├── static/                # Archivos estáticos (CSS, JS, imágenes)
 ├── templates/             # Vistas (HTML/Jinja2)
 └── README.md
+
+### Explicación de Carpetas
+
+| **Carpeta/Archivo**       | **Capa MVC/BD**       | **Descripción**                                                                 |
+|---------------------------|-----------------------|---------------------------------------------------------------------------------|
+| `app/controllers/`        | Control               | Maneja la lógica de peticiones HTTP (ej: procesar datos de subconsultas ML).   |
+| `app/models/`             | Modelo                | Define entidades y reglas de negocio (ej: `ModeloML.py` con algoritmos).        |
+| `app/views/`              | Vista                 | *(Opcional)* En frameworks como MVC clásico, contiene lógica de presentación.   |
+| `app/database/`           | Base de Datos         | Operaciones CRUD y conexión a la BD (ej: `queries.py`, `connectors/`).          |
+| `app/routes/`             | Control               | Asocia URLs con controladores (ej: `routes.py` con `@app.route` en Flask).       |
+| `config/database.py`      | Base de Datos         | Configuración centralizada (ej: URI de conexión, pooling).                      |
+| `static/`                 | Vista                 | Assets estáticos: `css/`, `js/`, `img/` (ej: Bootstrap, scripts de visualización). |
+| `templates/`              | Vista                 | Plantillas renderizables (ej: `index.html`, `results.html` con Jinja2/Handlebars). |
+| `README.md`               | -                     | Guía de instalación, uso y arquitectura del proyecto.                           |
