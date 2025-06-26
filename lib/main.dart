@@ -14,13 +14,13 @@ class MainApp extends StatelessWidget {
       title: 'Subtitulaje en Tiempo Real',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: const LoginScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,30 +40,11 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const Text(
-                'Inicia sesión para subtitular en tiempo real',
+                'Subtitulaje en tiempo real para presentaciones',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 40),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Usuario',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Contraseña',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -82,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text('Ingresar'),
+                child: const Text('INICIO'),
               ),
             ],
           ),
@@ -119,7 +100,7 @@ class _AudioCaptureScreenState extends State<AudioCaptureScreen> {
       onStatus: (val) {
         if (val == "done" && _isListening) {
           _speech.stop();
-          _startListening();
+          _startListening(); // Auto-reinicia
         }
       },
     );
